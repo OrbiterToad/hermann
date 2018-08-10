@@ -12,25 +12,35 @@
     <link rel="stylesheet" th:href="'../style.css'">
 </head>
 <body>
-<div class="container">
-    <div class="card card-body darker">
-        <div class="darker">
-
-            <div class="col-4" th:each="client : ${clients}">
-                <a th:href="'/client/' + ${client.id}">
-                    <div class="card moviecard">
-                        <div class="card-body nodec">
-                            <h5 class="card-title" th:text="${client.name}"></h5>
-                            <a>
-                                <span th:text="${client.ip}"></span>
-                            </a>
-                            <a class="float-right" th:text="${client.os}"></a>
+<div class="card card-body darker">
+    <div class="darker">
+        <div class="row">
+            <div class="col-4" th:each="model : ${clients}">
+                <div class="card card-client">
+                    <div class="card-header">
+                        <a th:href="'/client/' + ${model.client.id}" class="card-title"
+                           th:text="${model.client.name}"></a>
+                    </div>
+                    <div class="card-body">
+                        <a>
+                            <span th:text="${model.client.ip}"></span>
+                        </a>
+                        <a class="float-right" th:text="${model.client.os}"></a>
+                        <br>
+                        <br>
+                        <div th:switch="${model.online}">
+                            <div th:case="true" class="alert alert-success">
+                                Online
+                            </div>
+                            <div th:case="false" class="alert alert-danger">
+                                Offline
+                            </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
-
         </div>
+
     </div>
 </div>
 </body>

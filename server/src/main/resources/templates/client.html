@@ -12,77 +12,76 @@
     <link rel="stylesheet" th:href="'../style.css'">
 </head>
 <body>
-<div class="container">
-    <div class="card card-body darker">
-        <div class="darker">
-            <h1 th:text="'Dashboard for ' + ${client.name}"></h1>
-            <div class="card">
-                <div class="card-header">
-                    Console
-                    <button type="submit" class="btn btn-danger float-right"
-                            onclick="document.getElementById('clear').submit()">Clear
-                    </button>
+<div class="card card-body darker">
+    <div class="darker">
+        <h1 th:text="'Dashboard for ' + ${client.name}"></h1>
+        <div class="card">
+            <div class="card-header">
+                Console
+                <button type="submit" class="btn btn-danger float-right"
+                        onclick="document.getElementById('clear').submit()">Clear
+                </button>
+            </div>
+            <div class="card-body">
+                <div th:switch="${online}">
+                    <div th:case="true" class="alert alert-success" role="alert">
+                        Online
+                    </div>
+                    <div th:case="false" class="alert alert-danger" role="alert">
+                        Offline
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div th:switch="${online}">
-                        <div th:case="true" class="alert alert-success" role="alert">
-                            Online
-                        </div>
-                        <div th:case="false" class="alert alert-danger" role="alert">
-                            Offline
-                        </div>
-                    </div>
-                    <div class="console card-body">
-                        <form th:action="'/sender/' + ${client.id}" method="post">
-                            <input class="console-input" type="text" name="command" autofocus
-                                   autocomplete="off" alt="" placeholder="command" required>
-                        </form>
-                        <br>
-                        <div th:each="message : ${messages}" th:switch="${message.type}">
-                            <pre class="console-error" th:case="'error'" th:text="${message.message}"></pre>
-                            <pre class="console-command" th:case="'command'" th:text="${message.message}"></pre>
-                            <pre class="console-init" th:case="'init'" th:text="${message.message}"></pre>
-                            <pre class="console-text" th:case="*" th:text="${message.message}"></pre>
-                        </div>
-                    </div>
+                <div class="console card-body">
+                    <form th:action="'/sender/' + ${client.id}" method="post">
+                        <input class="console-input" type="text" name="command" autofocus
+                               autocomplete="off" alt="" placeholder="command" required>
+                    </form>
                     <br>
-                    <a th:if="!${param.more}" th:href="'/client/' + ${client.id} + '?more=all'">Show All</a>
-                    <a th:if="${param.more}" th:href="'/client/' + ${client.id}">Show Less</a>
+                    <div th:each="message : ${messages}" th:switch="${message.type}">
+                        <pre class="console-error" th:case="'error'" th:text="${message.message}"></pre>
+                        <pre class="console-command" th:case="'command'" th:text="${message.message}"></pre>
+                        <pre class="console-init" th:case="'init'" th:text="${message.message}"></pre>
+                        <pre class="console-message" th:case="'message'" th:text="${message.message}"></pre>
+                        <pre class="console-text" th:case="*" th:text="${message.message}"></pre>
+                    </div>
                 </div>
+                <br>
+                <a th:if="!${param.more}" th:href="'/client/' + ${client.id} + '?more=all'">Show All</a>
+                <a th:if="${param.more}" th:href="'/client/' + ${client.id}">Show Less</a>
             </div>
-            <br>
-            <div class="card">
-                <div class="card-header">
-                    Info
-                </div>
-                <div>
-                    <table class="table">
-                        <tr>
-                            <td>Pc Name</td>
-                            <td th:text="${client.name}"></td>
-                        </tr>
-                        <tr>
-                            <td>Operating System</td>
-                            <td th:text="${client.os}"></td>
-                        </tr>
-                        <tr>
-                            <td>Pc User</td>
-                            <td th:text="${client.pcUser}"></td>
-                        </tr>
-                        <tr>
-                            <td>Ip</td>
-                            <td th:text="${client.ip}"></td>
-                        </tr>
-                        <tr>
-                            <td>Arch</td>
-                            <td th:text="${client.clientArch}"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <br>
-            <a class="btn btn-primary" href="/">Back</a>
         </div>
+        <br>
+        <div class="card">
+            <div class="card-header">
+                Info
+            </div>
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>Pc Name</td>
+                        <td th:text="${client.name}"></td>
+                    </tr>
+                    <tr>
+                        <td>Operating System</td>
+                        <td th:text="${client.os}"></td>
+                    </tr>
+                    <tr>
+                        <td>Pc User</td>
+                        <td th:text="${client.pcUser}"></td>
+                    </tr>
+                    <tr>
+                        <td>Ip</td>
+                        <td th:text="${client.ip}"></td>
+                    </tr>
+                    <tr>
+                        <td>Arch</td>
+                        <td th:text="${client.clientArch}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-primary" href="/">Back</a>
     </div>
 </div>
 <form id="clear" th:action="'/client/' + ${client.id} + '/clear'" method="post">

@@ -29,7 +29,11 @@ public class SenderController {
         Message message = new Message();
         message.setClient(client);
         message.setMessage("> " + command);
-        message.setType("command");
+        if (command.startsWith("chat")) {
+            message.setType("message");
+        } else {
+            message.setType("command");
+        }
         messageRepository.save(message);
 
         return "redirect:/client/" + clientId;

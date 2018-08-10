@@ -1,0 +1,10 @@
+.idea
+
+/server/target
+/client/target
+
+application.properties
+
+server-control.iml
+client/client.iml
+server/server.iml

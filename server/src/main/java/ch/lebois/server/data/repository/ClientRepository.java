@@ -13,6 +13,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     Client findClientByName(String name);
 
-    List<Client> findClientsByOrderByLastseen();
+    List<Client> findClientsByOrderByLastseenDesc();
 
 }
