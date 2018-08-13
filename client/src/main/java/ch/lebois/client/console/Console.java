@@ -1,7 +1,5 @@
 package ch.lebois.client.console;
 
-import ch.lebois.client.handler.ResponseSender;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,6 +29,7 @@ public class Console {
                 output.add(s);
             }
         } catch (IOException e) {
+            e.printStackTrace();
             return null;
         }
         return output;

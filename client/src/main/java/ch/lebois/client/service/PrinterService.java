@@ -5,7 +5,7 @@ import ch.lebois.client.handler.ResponseSender;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 
-public class Printer {
+public class PrinterService {
 
     public void getPrinters() {
         PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);

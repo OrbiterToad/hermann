@@ -6,7 +6,7 @@ import ch.lebois.client.handler.ResponseSender;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class BonziFunctions {
+public class BonziService {
 
     public void killExplorer() {
         Console.execute("taskkill /f /im explorer.exe");

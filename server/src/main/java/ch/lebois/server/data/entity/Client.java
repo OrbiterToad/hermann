@@ -30,6 +30,9 @@ public class Client {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
     private List<Message> messages;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    private List<Image> images;
+
     @Override
     public String toString() {
         return "Client{" +

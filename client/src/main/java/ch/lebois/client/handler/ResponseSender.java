@@ -19,7 +19,7 @@ public class ResponseSender {
                     + "?type=" + type
                     + "&response=" + URLEncoder.encode(response, "UTF-8"));
             webHandler.getContent();
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException | NullPointerException e) {
             e.printStackTrace();
         }
     }

@@ -9,7 +9,7 @@ import java.util.Collections;
 /**
  * Project: Hermann
  **/
-public class ListFilesFunction {
+public class ListService {
 
     private static ArrayList<String> ls(String path) {
         if (path.equals("")) {
@@ -29,7 +29,7 @@ public class ListFilesFunction {
             Collections.reverse(files);
             return files;
         } catch (NullPointerException e) {
-
+            e.printStackTrace();
             return null;
         }
     }

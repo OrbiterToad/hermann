@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title th:text="''"></title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="'../style.css'">
 </head>
 <body>
-<div class="card card-body darker">
+<div class="card card-body darker hidden-md-up">
     <div class="darker">
         <h1 th:text="'Dashboard for ' + ${client.name}"></h1>
         <div class="card">
@@ -58,6 +58,10 @@
             <div>
                 <table class="table">
                     <tr>
+                        <td>Waiting for command?</td>
+                        <th th:text="${client.command}"></th>
+                    </tr>
+                    <tr>
                         <td>Pc Name</td>
                         <td th:text="${client.name}"></td>
                     </tr>
@@ -81,9 +85,22 @@
             </div>
         </div>
         <br>
+        <div class="card">
+            <div class="card-header">Images</div>
+            <div class="row card-body">
+                <div class="col-4" th:each="image:${client.images}" style="margin-bottom: 20px">
+                    <a th:href="'/image/' + ${image.id}" class="btn" style="padding: 0">
+                        <img th:src="'/image/' + ${image.id}" class="img-thumbnail">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
         <a class="btn btn-primary" href="/">Back</a>
     </div>
 </div>
+
+
 <form id="clear" th:action="'/client/' + ${client.id} + '/clear'" method="post">
 </form>
 </body>

