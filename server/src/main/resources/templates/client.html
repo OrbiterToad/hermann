@@ -89,9 +89,11 @@
             <div class="card-header">Images</div>
             <div class="row card-body">
                 <div class="col-4" th:each="image:${client.images}" style="margin-bottom: 20px">
-                    <a th:href="'/image/' + ${image.id}" class="btn" style="padding: 0">
-                        <img th:src="'/image/' + ${image.id}" class="img-thumbnail">
-                    </a>
+                    <center>
+                        <a th:href="'/image/' + ${image.id}" class="btn" style="padding: 0">
+                            <img th:src="'/image/' + ${image.id}" class="img-thumbnail">
+                        </a>
+                    </center>
                 </div>
             </div>
         </div>
