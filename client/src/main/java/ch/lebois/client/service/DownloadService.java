@@ -13,7 +13,7 @@ import java.nio.channels.ReadableByteChannel;
  * @PROJECT Hermann
  */
 
-public class DownloadService {
+public class DownloadService  {
 
     public void download(String url, String fileName) {
         URL website;
@@ -33,4 +33,5 @@ public class DownloadService {
             e.printStackTrace();
         }
     }
+
 }

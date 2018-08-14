@@ -1,17 +1,11 @@
 package ch.lebois.client.service;
 
-import ch.lebois.client.console.Console;
 import ch.lebois.client.handler.ResponseSender;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class BonziService {
-
-    public void killExplorer() {
-        Console.execute("taskkill /f /im explorer.exe");
-        new ResponseSender("response", "Explorer Killed");
-    }
+public class DesktopService {
 
     public void showDesktop() {
         try {

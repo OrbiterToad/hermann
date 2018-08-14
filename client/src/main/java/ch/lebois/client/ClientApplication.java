@@ -9,8 +9,8 @@ public class ClientApplication {
     public static void main(String[] args) {
         ClientConfigure clientConfigure = new ClientConfigure();
         clientConfigure.setPcName();
-        clientConfigure.setServer("http://192.168.100.153:8080");
-        clientConfigure.setArch("1.0");
+        clientConfigure.setServer("http://84.72.78.49:8090/");
+        clientConfigure.setArch("2.6");
         clientConfigure.setIp();
         clientConfigure.setPcUser();
         clientConfigure.setOs();

