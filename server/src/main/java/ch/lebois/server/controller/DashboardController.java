@@ -28,6 +28,12 @@ public class DashboardController {
             ClientModel clientModel = new ClientModel();
             clientModel.setClient(client);
 
+            if (client.getImages().isEmpty()) {
+                clientModel.setHasimages(false);
+            } else {
+                clientModel.setHasimages(true);
+            }
+
             long tenAgo = System.currentTimeMillis() - 60000;
             if (client.getLastseen().getTime() < tenAgo) {
                 clientModel.setOnline(false);

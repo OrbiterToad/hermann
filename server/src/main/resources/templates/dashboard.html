@@ -17,10 +17,13 @@
         <h1>Connected Computers</h1>
         <div class="row">
             <div class="col-4" th:each="model : ${clients}">
-                <div class="card card-client">
+                <div class="card card-client" style="margin-bottom: 20px">
                     <div class="card-header">
                         <a th:href="'/client/' + ${model.client.id}" class="card-title"
-                           th:text="${model.client.name}"></a>
+                           th:text="${model.client.nickname}"></a>
+                    </div>
+                    <div th:if="${model.hasimages}">
+                        <img class="card-img-top" th:src="'/image/' + ${model.client.images.get(0).id}">
                     </div>
                     <div class="card-body">
                         <a>
@@ -41,8 +44,8 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <br>
 </div>
 </body>
 </html>

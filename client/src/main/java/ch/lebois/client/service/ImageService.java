@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.util.Date;
 
 public class ImageService {
@@ -61,6 +62,9 @@ public class ImageService {
             new ResponseSender("imgend", "");
             new ResponseSender().reset();
             file.delete();
+        } catch (NoSuchFileException e) {
+            new ResponseSender("error", "No File created");
+            new ResponseSender().reset();
         } catch (IOException e) {
             e.printStackTrace();
         }

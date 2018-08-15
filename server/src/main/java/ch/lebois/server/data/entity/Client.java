@@ -2,7 +2,13 @@ package ch.lebois.server.data.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -14,7 +20,10 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
+
+    private String nickname;
     private String pcUser;
 
     private String os;
@@ -33,19 +42,4 @@ public class Client {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
     private List<Image> images;
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", pcUser='" + pcUser + '\'' +
-                ", os='" + os + '\'' +
-                ", ip='" + ip + '\'' +
-                ", clientArch='" + clientArch + '\'' +
-                ", lastseen=" + lastseen +
-                ", refreshtime=" + refreshtime +
-                ", command='" + command + '\'' +
-                ", messages=" + messages +
-                '}';
-    }
 }

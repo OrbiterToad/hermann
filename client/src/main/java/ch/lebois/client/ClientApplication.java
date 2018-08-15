@@ -8,12 +8,10 @@ public class ClientApplication {
 
     public static void main(String[] args) {
         ClientConfigure clientConfigure = new ClientConfigure();
-        clientConfigure.setPcName();
-        clientConfigure.setServer("http://84.72.78.49:8090/");
-        clientConfigure.setArch("2.6");
-        clientConfigure.setIp();
-        clientConfigure.setPcUser();
-        clientConfigure.setOs();
+        clientConfigure.setServer("http://localhost:8090/");
+//        clientConfigure.setServer("http://84.72.78.49:8090/");
+        clientConfigure.setArch("2.9");
+
 
         new Autostart().decide();
 

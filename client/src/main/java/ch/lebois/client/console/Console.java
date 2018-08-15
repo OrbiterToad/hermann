@@ -26,7 +26,7 @@ public class Console {
             }
 
             while ((s = stdError.readLine()) != null) {
-                output.add(s);
+                output.add(">ERROR" + s);
             }
         } catch (IOException e) {
             e.printStackTrace();

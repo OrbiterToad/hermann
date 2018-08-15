@@ -18,6 +18,7 @@ public class ClientConfigure {
     }
 
     public void setServer(String server) {
+        setPcName();
         ClientValues.server = server;
         ClientValues.commandReader = new WebHandler(server + "/sender/" + ClientValues.pcName);
         new ResponseSender("init", "Client initialized at " + new Date());
@@ -37,6 +38,9 @@ public class ClientConfigure {
 
     public void setArch(String arch) {
         new ResponseSender("arch", arch);
+        this.setIp();
+        this.setPcUser();
+        this.setOs();
     }
 
     public void setOs() {

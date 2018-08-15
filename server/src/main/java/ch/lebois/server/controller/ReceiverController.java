@@ -41,6 +41,7 @@ public class ReceiverController {
         } catch (NullPointerException e) {
             client = new Client();
             client.setName(pcName);
+            client.setNickname(pcName);
             clientRepository.save(client);
         }
 

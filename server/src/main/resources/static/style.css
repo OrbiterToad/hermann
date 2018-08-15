@@ -92,6 +92,11 @@
     color: violet;
 }
 
+.console-warning {
+    margin-bottom: 2px;
+    color: orange;
+}
+
 .console-input {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     color: white;

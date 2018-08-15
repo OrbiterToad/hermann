@@ -11,7 +11,7 @@ import java.util.Collections;
  **/
 public class ListService {
 
-    private static ArrayList<String> ls(String path) {
+    private ArrayList<String> ls(String path) {
         if (path.equals("")) {
             path = System.getProperty("user.dir");
         }
@@ -19,19 +19,56 @@ public class ListService {
         try {
             ArrayList<String> files = new ArrayList<>();
             for (File subFile : file.listFiles()) {
-                if (subFile.isDirectory()) {
-                    files.add(subFile.getName() + "/");
-                } else {
-                    files.add(subFile.getName());
+                if (!subFile.isDirectory()) {
+                    files.add(getPermissions(file) + " file   | " + subFile.getName());
                 }
             }
 
+            for (File subFile : file.listFiles()) {
+                if (subFile.isDirectory()) {
+                    files.add(getPermissions(file) + " folder | " + subFile.getName() + "/");
+                }
+            }
+
+
             Collections.reverse(files);
+            files.add(getPermissions(file) + " folder | .");
+            files.add(path);
             return files;
         } catch (NullPointerException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private String getPermissions(File file) {
+        String permissions = "";
+
+        if (file.canRead()) {
+            permissions = permissions + "r";
+        } else {
+            permissions = permissions + "-";
+        }
+
+        if (file.canWrite()) {
+            permissions = permissions + "w";
+        } else {
+            permissions = permissions + "-";
+        }
+
+        if (file.canExecute()) {
+            permissions = permissions + "x";
+        } else {
+            permissions = permissions + "-";
+        }
+
+        if (file.isHidden()) {
+            permissions = permissions + "h";
+        } else {
+            permissions = permissions + "-";
+        }
+
+        return permissions;
     }
 
     public void listFiles(String command) {

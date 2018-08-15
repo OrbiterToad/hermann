@@ -5,7 +5,11 @@ import ch.lebois.server.data.repository.ClientRepository;
 import ch.lebois.server.data.repository.MessageRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("client")
@@ -45,6 +49,15 @@ public class ClientController {
     @PostMapping("{clientId}/clear")
     public String clearConsole(@PathVariable("clientId") Long clientId) {
         messageRepository.deleteByClient(clientRepository.findClientById(clientId));
+        return "redirect:/client/" + clientId;
+    }
+
+    @PostMapping("{clientId}/nickname")
+    public String setNickname(@PathVariable("clientId") Long clientId,
+                              @RequestParam("nickname") String nickname) {
+        Client client = clientRepository.findClientById(clientId);
+        client.setNickname(nickname);
+        clientRepository.save(client);
         return "redirect:/client/" + clientId;
     }
 

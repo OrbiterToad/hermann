@@ -8,6 +8,8 @@ public class ClientModel {
 
     private Client client;
 
+    private boolean hasimages;
+
     private boolean online;
 
 }

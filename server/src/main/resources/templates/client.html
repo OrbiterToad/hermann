@@ -14,7 +14,7 @@
 <body>
 <div class="card card-body darker hidden-md-up">
     <div class="darker">
-        <h1 th:text="'Dashboard for ' + ${client.name}"></h1>
+        <h1 th:text="'Dashboard for ' + ${client.nickname}"></h1>
         <div class="card">
             <div class="card-header">
                 Console
@@ -42,12 +42,15 @@
                         <pre class="console-command" th:case="'command'" th:text="${message.message}"></pre>
                         <pre class="console-init" th:case="'init'" th:text="${message.message}"></pre>
                         <pre class="console-message" th:case="'message'" th:text="${message.message}"></pre>
+                        <pre class="console-warning" th:case="'warning'" th:text="${message.message}"></pre>
                         <pre class="console-text" th:case="*" th:text="${message.message}"></pre>
                     </div>
                 </div>
                 <br>
                 <a th:if="!${param.more}" th:href="'/client/' + ${client.id} + '?more=all'">Show All</a>
                 <a th:if="${param.more}" th:href="'/client/' + ${client.id}">Show Less</a>
+                <br>
+                <a href="/help">Help with commands</a>
             </div>
         </div>
         <br>
@@ -56,36 +59,48 @@
                 Info
             </div>
             <div>
-                <table class="table">
-                    <tr>
-                        <td>Waiting for command?</td>
-                        <th th:text="${client.command}"></th>
-                    </tr>
-                    <tr>
-                        <td>Pc Name</td>
-                        <td th:text="${client.name}"></td>
-                    </tr>
-                    <tr>
-                        <td>Operating System</td>
-                        <td th:text="${client.os}"></td>
-                    </tr>
-                    <tr>
-                        <td>Pc User</td>
-                        <td th:text="${client.pcUser}"></td>
-                    </tr>
-                    <tr>
-                        <td>Ip</td>
-                        <td th:text="${client.ip}"></td>
-                    </tr>
-                    <tr>
-                        <td>Last Seen</td>
-                        <td th:text="${client.lastseen}"></td>
-                    </tr>
-                    <tr>
-                        <td>Arch</td>
-                        <td th:text="${client.clientArch}"></td>
-                    </tr>
-                </table>
+                <form th:action="'/client/' + ${client.id} + '/nickname'" method="post">
+                    <table class="table">
+                        <tr>
+                            <td>Waiting for command?</td>
+                            <th th:text="${client.command}"></th>
+                        </tr>
+                        <tr>
+                            <td>Pc Nickname</td>
+                            <td>
+                                <input placeholder="Nickname" th:value="${client.nickname}" name="nickname"
+                                       class="form-control">
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" type="submit">Save</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Original Pc Name</td>
+                            <td th:text="${client.name}"></td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td th:text="${client.os}"></td>
+                        </tr>
+                        <tr>
+                            <td>Pc User</td>
+                            <td th:text="${client.pcUser}"></td>
+                        </tr>
+                        <tr>
+                            <td>Ip</td>
+                            <td th:text="${client.ip}"></td>
+                        </tr>
+                        <tr>
+                            <td>Last Seen</td>
+                            <td th:text="${client.lastseen}"></td>
+                        </tr>
+                        <tr>
+                            <td>Arch</td>
+                            <td th:text="${client.clientArch}"></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
         <br>
