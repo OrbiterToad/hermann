@@ -9,7 +9,7 @@ public class ClientApplication {
     public static void main(String[] args) {
         ClientConfigure clientConfigure = new ClientConfigure();
         clientConfigure.setServer("http://localhost:8090/");
-//        clientConfigure.setServer("http://84.72.78.49:8090/");
+//        clientConfigure.setServer("http://scorewinner.ch:8090/");
         clientConfigure.setArch("2.9");
 
 

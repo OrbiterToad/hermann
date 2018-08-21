@@ -9,6 +9,7 @@ import ch.lebois.client.service.KillService;
 import ch.lebois.client.service.ListService;
 import ch.lebois.client.service.PrinterService;
 import ch.lebois.client.service.ProcessService;
+import ch.lebois.client.service.SoundService;
 import ch.lebois.client.service.chat.Chat;
 
 import java.util.Collections;
@@ -87,6 +88,9 @@ public class CommandReader {
             new ResponseSender().reset();
         } else if (command.equals("tasks")) {
             new ProcessService().getRunningProcesses();
+            new ResponseSender().reset();
+        } else if (command.startsWith("play")) {
+            new SoundService().playSound(command);
             new ResponseSender().reset();
         } else {
             isFunction = false;
