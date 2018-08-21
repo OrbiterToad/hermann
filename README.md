@@ -2,13 +2,13 @@
 <p>Applicaton to Control Computers Remote via Commandline and Custom Commands</p>
 <hr>
 <h3>Features</h3>
-- [x] Client Information (IP, User, OS, etc.)
-- [x] Place in Autostart
-- [x] Print Files
-- [x] Download Files
-- [x] Chat with Client
-- [x] Screenshot
-- [x] Webcam
-- [x] Play Sounds
-- [x] Control Tasks
-- [ ] Run VB Scripts
+- [x] Client Information (IP, User, OS, etc.)<br>
+- [x] Place in Autostart<br>
+- [x] Print Files<br>
+- [x] Download Files<br>
+- [x] Chat with Client<br>
+- [x] Screenshot<br>
+- [x] Webcam<br>
+- [x] Play Sounds<br>
+- [x] Control Tasks<br>
+- [ ] Run VB Scripts<br>
