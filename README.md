@@ -1,7 +1,7 @@
 <h1>Hermann</h1>
 <p>Applicaton to Control Computers Remote via Commandline and Custom Commands</p>
 <hr>
-<h3>Features</h3>
+###Features
 - [x] Client Information (IP, User, OS, etc.)<br>
 - [x] Place in Autostart<br>
 - [x] Print Files<br>
