@@ -2,14 +2,14 @@
 <p>Applicaton to Control Computers Remote via Commandline and Custom Commands</p>
 <hr>
 <h3>Support</h3>
-<p>tested</p>
-- Windows 7<br>
-- Windows 10
-<p>not tested</p>
-- Windows xp<br>
-- Windows Vista<br>
-- Windows 8<br>
-- Linux
+<h4>tested</h4>
+<li>- Windows 7</li>
+<li>- Windows 10</li>
+<h4>not tested</h4>
+<li>- Windows xp</li>
+<li>- Windows Vista</li>
+<li>- Windows 8</li>
+<li>- Linux</li>
 <h3>Features</h3>
 - [x] Client Information (IP, User, OS, etc.)<br>
 - [x] Place in Autostart<br>
