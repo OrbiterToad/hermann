@@ -21,6 +21,7 @@
 - [x] Play Sounds<br>
 - [x] Control Tasks<br>
 - [ ] Run VB Scripts<br>
+- [ ] Keylogger
 <hr>
 <img src="https://i.imgur.com/sp0nqdt.png">
 
