@@ -1,6 +1,8 @@
 <h1>Hermann</h1>
 <p>Applicaton to Control Computers Remote via Commandline and Custom Commands</p>
 <hr>
+<img src="https://i.imgur.com/Ts0MsZV.png">
+<hr>
 <h3>Support</h3>
 <h4>tested</h4>
 <li>- Windows 7</li>
