@@ -11,6 +11,7 @@
 <li>- Windows 8</li>
 <li>- Linux</li>
 <h3>Features</h3>
+
 - [x] Client Information (IP, User, OS, etc.)<br>
 - [x] Place in Autostart<br>
 - [x] Print Files<br>
@@ -21,7 +22,8 @@
 - [x] Play Sounds<br>
 - [x] Control Tasks<br>
 - [ ] Run VB Scripts<br>
-- [ ] Keylogger
+- [ ] Keylogger<br>
+- [ ] Email Server logger
 <hr>
 <img src="https://i.imgur.com/sp0nqdt.png">
 
