@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class Console {
 
     public static ArrayList<String> execute(String command) {
@@ -29,7 +34,6 @@ public class Console {
                 output.add(">ERROR" + s);
             }
         } catch (IOException e) {
-            e.printStackTrace();
             return null;
         }
         return output;

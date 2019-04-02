@@ -6,8 +6,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * Project: Hermann
+ * @author Wetwer
+ * @project server-control
  **/
+
 public class Chat extends JDialog {
 
     private static Chat instance;
@@ -40,8 +42,6 @@ public class Chat extends JDialog {
 
     /**
      * Lemao SINGELTONNNNN
-     *
-     * @return
      */
     public static Chat getInstance() {
         if (instance == null) {

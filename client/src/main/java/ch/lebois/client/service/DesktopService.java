@@ -5,6 +5,11 @@ import ch.lebois.client.handler.ResponseSender;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class DesktopService {
 
     public void showDesktop() {

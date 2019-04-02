@@ -8,6 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class WebHandler {
 
     private URL url;

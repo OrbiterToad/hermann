@@ -12,10 +12,15 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.util.Date;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class ImageService {
 
     public File takeScreenshot() {
-        File file = new File(String.valueOf(new Date().getTime()) + ".jpg");
+        File file = new File(new Date().getTime() + ".jpg");
         try {
             Robot robot = new Robot();
             Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
@@ -65,6 +70,7 @@ public class ImageService {
         } catch (NoSuchFileException e) {
             new ResponseSender("error", "No File created");
             new ResponseSender().reset();
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

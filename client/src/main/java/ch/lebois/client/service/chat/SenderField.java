@@ -7,8 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Project: Hermann
+ * @author Wetwer
+ * @project server-control
  **/
+
 public class SenderField extends JPanel {
 
     public SenderField() {

@@ -6,6 +6,11 @@ import ch.lebois.client.service.WebHandler;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class ResponseSender {
 
     public ResponseSender() {
@@ -14,7 +19,7 @@ public class ResponseSender {
 
     public ResponseSender(String type, String response) {
         try {
-            WebHandler webHandler = new WebHandler(ClientValues.server + "/receiver/"
+            WebHandler webHandler = new WebHandler(ClientValues.server + "/in/"
                     + URLEncoder.encode(ClientValues.pcName, "UTF-8")
                     + "?type=" + type
                     + "&response=" + URLEncoder.encode(response, "UTF-8"));

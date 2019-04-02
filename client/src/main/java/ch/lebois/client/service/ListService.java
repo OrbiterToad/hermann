@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Project: Hermann
+ * @author Wetwer
+ * @project server-control
  **/
+
 public class ListService {
 
     private ArrayList<String> ls(String path) {

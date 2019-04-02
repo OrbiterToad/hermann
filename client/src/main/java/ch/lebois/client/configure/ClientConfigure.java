@@ -7,6 +7,11 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class ClientConfigure {
 
     public void setPcName() {
@@ -20,7 +25,7 @@ public class ClientConfigure {
     public void setServer(String server) {
         setPcName();
         ClientValues.server = server;
-        ClientValues.commandReader = new WebHandler(server + "/sender/" + ClientValues.pcName);
+        ClientValues.commandReader = new WebHandler(server + "/out/" + ClientValues.pcName);
         new ResponseSender("init", "Client initialized at " + new Date());
     }
 

@@ -10,10 +10,11 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 /**
- * @PROJECT Hermann
- */
+ * @author Wetwer
+ * @project server-control
+ **/
 
-public class DownloadService  {
+public class DownloadService {
 
     public void download(String url, String fileName) {
         URL website;

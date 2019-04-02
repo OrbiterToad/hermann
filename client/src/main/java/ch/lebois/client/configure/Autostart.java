@@ -6,6 +6,11 @@ import ch.lebois.client.service.DownloadService;
 
 import java.io.File;
 
+/**
+ * @author Wetwer
+ * @project server-control
+ **/
+
 public class Autostart {
 
     private void autostartWin10() {
