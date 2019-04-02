@@ -25,7 +25,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>ch.lebois.client.ClientApplication</mainClass>
+                            <mainClass>ch.wetwer.client.ClientApplication</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
